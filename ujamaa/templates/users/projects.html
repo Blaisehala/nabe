@@ -3,10 +3,22 @@
 {% block content %}
 
 {% for post in posts %}
-<h1>{{post.title}}</h1>
-<h2>{{post.Neighbourhood}}</h2>
-<p>{{post.content}}</p>
-<p>{{post.date_posted}}</p>
+
+
+
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ post.title }}</a>
+      <small class="text-muted">{{ post.Neighbourhood }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ post.content}}</a></h2>
+    <p class="article-content">{{ post.date_posted }}</p>
+  </div>
+</article>
+
+
 {% endfor %}
 
 {% endblock content %}
+
