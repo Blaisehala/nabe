@@ -1,0 +1,49 @@
+{% extends "users/base.html"%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="content-section">
+  <div class="media ">
+    <img class="rounded-circle account-img pt-2" src="{{ user.profile.image.url }}" height="100px "> 
+    <div class="media-body p-2">
+      <h2 class="account-heading">{{ user.username}}</h2>
+      <p class="text-secondary">{{ user.email}} </p>
+    </div>
+  </div>
+  <br>
+  <!-- FORM HERE -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4"> Profile Info</legend>
+      {{ u_form|crispy}}
+      {{ p_form|crispy}}
+    </fieldset>
+
+    <div class="form-group p-2">
+      <button class="btn btn-outline-primary" type="submit"> Update </button>
+    </div>
+
+  </form>
+
+</div>
+
+<!-- <hr>
+{% for project in project %}
+<div class="col-md-4" id="">
+  <div class="card mb-4">
+    <h5 class="card-title text-center"><b>Title: </b>{{project.title}}</h5>
+    <img src="{{ project.image.url }}" alt="" width="400" />
+  </div>
+  </p>
+</div>
+{% empty %}
+<div class="row">
+  <div class="text-center" role="alert">
+    <p> No Posts Yet! </p>
+  </div>
+</div>
+</div>
+</div> -->
+{% endfor %}
+{% endblock content %}
