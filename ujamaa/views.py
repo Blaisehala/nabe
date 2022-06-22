@@ -9,21 +9,7 @@ from .models import Profile, Neighbourhood, Business
 
 
 
-# posts =[
-#   {
-#     'Neighbourhood': 'Brownsville',
-#     'title': 'Neighbourhood',
-#     'content':'Brave Neighbourhood',
-#     'date_posted':"August 12 2022"
-#   },
 
-#    {
-#     'Neighbourhood': 'Brownsville',
-#     'title': 'Neighbourhood',
-#     'content':'Brave Neighbourhood',
-#     'date_posted':"August 12 2022"
-#   }
-# ]
 
 
 

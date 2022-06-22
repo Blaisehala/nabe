@@ -17,6 +17,7 @@
     <!-- ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
+    <link rel="icon" href="https://media-exp1.licdn.com/dms/image/C4D0BAQFVJtDC9aFqKw/company-logo_200_200/0/1596017070572?e=2147483647&v=beta&t=3JBb5rnkP9HZzNmtHIkl449hJKHjoCXDHhAHMLsfg0U" style="border-radius: 50%;">
 
   {% if title %}
   <title>BlueBrave- {{title}}</title>
@@ -30,7 +31,7 @@
 <div class="">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     {% if user.is_authenticated %}
-    <a class="navbar-brand" href="#">BlueBrave</a>
+    <a class="navbar-brand" href="{%url 'ujamaa-home'%}">BlueBrave</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
