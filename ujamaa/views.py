@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 # from django.http import HttpResponse
-from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm
+from .forms import UserRegisterForm,UserUpdateForm,ProfileUpdateForm,NewProjectForm,NewBusinessForm,NewPostForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Neighbourhood, Business
@@ -9,21 +9,21 @@ from .models import Profile, Neighbourhood, Business
 
 
 
-posts =[
-  {
-    'Neighbourhood': 'Brownsville',
-    'title': 'Neighbourhood',
-    'content':'Brave Neighbourhood',
-    'date_posted':"August 12 2022"
-  },
+# posts =[
+#   {
+#     'Neighbourhood': 'Brownsville',
+#     'title': 'Neighbourhood',
+#     'content':'Brave Neighbourhood',
+#     'date_posted':"August 12 2022"
+#   },
 
-   {
-    'Neighbourhood': 'Brownsville',
-    'title': 'Neighbourhood',
-    'content':'Brave Neighbourhood',
-    'date_posted':"August 12 2022"
-  }
-]
+#    {
+#     'Neighbourhood': 'Brownsville',
+#     'title': 'Neighbourhood',
+#     'content':'Brave Neighbourhood',
+#     'date_posted':"August 12 2022"
+#   }
+# ]
 
 
 
@@ -39,17 +39,17 @@ def home(request):
 
 
 # Projects Page
+@login_required
 def projects(request):
-  context ={
+  neighbourhood = Neighbourhood.objects.all()
 
-    'posts': posts
-  }
-  return render(request, 'users/projects.html',context)
+  return render(request, 'users/projects.html', {'neighbourhood': neighbourhood})
 
   
 # About Page 
 def about(request):
   return render(request, 'users/about.html', {'title': 'About'})
+
 
 
 # register 
@@ -95,4 +95,78 @@ def profile(request):
   
   return render(request, 'users/profile.html', context)
 
+# ________________________________________________________________
 
+def join_hood(request,id):
+    neighbourhood = get_object_or_404(Neighbourhood, id=id)
+    request.user.profile.neighbourhood = neighbourhood
+    request.user.profile.save()
+    return render(request,'users/specific.html', {'id':id, 'neighbourhood':neighbourhood})
+
+
+
+
+
+
+# _______________________________________________________________
+
+
+@login_required(login_url='/users/login')
+def new_post(request):
+  current_user = request.user
+  if request.method == 'POST':
+    form =NewProjectForm(request.POST, request.FILES)
+    if form.is_valid():
+      print('post')
+      project = form.save(commit=False)
+      
+      project.user = current_user
+      project.save()
+    return redirect('nb-project')
+  
+  else:
+    form = NewProjectForm()
+
+  return render(request, 'users/newpost.html', {'form':form})
+
+
+# business_post
+
+@login_required(login_url='/users/login')
+def biz_post(request):
+  current_user = request.user
+  if request.method == 'POST':
+    form =NewBusinessForm(request.POST, request.FILES)
+    if form.is_valid():
+      print('post')
+      business = form.save(commit=False)
+      
+      business.user = current_user
+      business.save()
+    return redirect('jb')
+  
+  else:
+    form = NewBusinessForm()
+
+  return render(request, 'users/businesspost.html', {'form':form})
+
+
+
+
+  # Add_post
+def add_post(request):
+  current_user = request.user
+  if request.method == 'POST':
+    form =NewPostForm(request.POST, request.FILES)
+    if form.is_valid():
+      print('post')
+      project = form.save(commit=False)
+      
+      project.user = current_user
+      project.save()
+    return redirect('jb')
+  
+  else:
+    form = NewPostForm()
+
+  return render(request, 'users/post.html', {'form':form})

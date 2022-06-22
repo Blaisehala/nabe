@@ -36,6 +36,16 @@ ul {
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  text-decoration: none;
+  margin-top: 20px;
+  width: 50%;
+  position: absolute;
+    top:20px;
+    /* bottom: 0; */
+    left: 0;
+    right: 0;
+    
+    margin: auto;
 }
 
 .article-title {

@@ -2,23 +2,53 @@
 
 {% block content %}
 
-{% for post in posts %}
-
-
-
-<article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <a class="mr-2" href="#">{{ post.title }}</a>
-      <small class="text-muted">{{ post.Neighbourhood }}</small>
-    </div>
-    <h2><a class="article-title" href="#">{{ post.content}}</a></h2>
-    <p class="article-content">{{ post.date_posted }}</p>
+<div class="container">
+  <div class="text-center p-2">
+    <h1>Highlighted Neighbourhood</h1>
   </div>
-</article>
+  <div class="row">
+    {% for neighbourhood in neighbourhood %}
+
+    <div class="col-md-4 mb-4 ">
+      <div class="card" style="width: 18rem;">
+        <img src="{{neighbourhood.neighbourhood_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <!-- <h5 class="card-title">{{ neighbourhood.title }}</h5> -->
+          <h5 class="card-title">{{ neighbourhood.title }}</h5>
+          <div class="badge" style="float:left">
+            <h6><span style="font-weight: lighter; font-size: small;">Location:
+                <b>{{ neighbourhood.location }}</b></span>
+            </h6>
+
+          </div>
+          
+          <div class="badge" style="float:right">
+            <h6><span class="badge badge-info">{{ neighbourhood.county }}</span></h6>
+          </div>
+          
+          <br><br>
 
 
-{% endfor %}
+          <small>
+            <p class="article-content">{{ neighbourhood.date_created }}</p>
+          </small>
+
+          <a href="{% url 'jb' neighbourhood.id %}"><button class="btn btn-primary btn-block">More Details</button></a>
+
+          
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+</div>
+
+
 
 {% endblock content %}
-
