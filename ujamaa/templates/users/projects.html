@@ -28,12 +28,15 @@
           
           <br><br>
 
-
-          <small>
-            <p class="article-content">{{ neighbourhood.date_created }}</p>
-          </small>
-
-          <a href="{% url 'jb' neighbourhood.id %}"><button class="btn btn-primary btn-block">More Details</button></a>
+          <span class="text-muted" style="font-size: small">
+            <i class="bi bi-calendar3"></i>
+            <small>
+              {{ neighbourhood.date_created }}
+            </small>
+  
+          </span>
+         
+          <a href="{% url 'jb' neighbourhood.id %}"><button class="btn btn-primary btn-block mt-2">More Details</button></a>
 
           
         </div>

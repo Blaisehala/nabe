@@ -104,14 +104,12 @@
               <p class="text-muted" style="font-size:small">
                 'Neighbourhood'
                 <span class="text-dark">
-                  <b>Karen</b>
+                  <b>{{neighbourhood.title}}</b>
                 </span>
 
               </p>
               <p class="card-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio illum, earum officiis possimus veniam
-                alias sequi vitae, iusto facilis et, error tenetur id. Sunt, optio. Excepturi quia eveniet aliquam!
-                Omnis.
+                {{post.content}}
               </p>
               <hr>
               <div class="d-flex flex-row user-info">
@@ -121,13 +119,15 @@
               <div class="d-flex flex-column justify-content-start ml-2">
                 <a href="">
                   <span class="name">
-                    <b>Blaise Hala</b>
+                    <b>{{post.user}}</b>
                   </span>
                 </a>
               </div>
               <span class="text-muted" style="font-size: small">
                 <i class="bi bi-calendar3"></i>
-                Feb. 19 2014 7:00pm
+                <small>
+                  <p class="article-content">  {{post.date_posted}}</p>
+                </small>
               </span>
 
             </div>
@@ -139,7 +139,7 @@
 
         </div>
         <a href="{% url 'post' %}"><button type="button" class="btn btn-primary">
-          Open
+          Add Post
         </button></a>
 
         
@@ -156,7 +156,7 @@
 
     <h5 class="py-4">
       <b>Featured Businesses</b>
-      |
+      in
       <span class="font-weight:lighter">{{neighbourhood.title}}</span>
 
     </h5>
@@ -168,7 +168,7 @@
             <div class="card-title">
               <h5>{{business.name}}</h5>
               <p class="text-muted" style="font-size:small">
-                Neighbourhood
+                
                 <span class="text-dark">
                   <b>{{neighbourhood.title}}</b>
                 </span>
@@ -193,7 +193,7 @@
               </div>
               <span class="text-muted" style="font-size: small">
                 <i class="bi bi-calendar3"></i>
-                {{post.date_posted}}
+                {{business.date_posted}}
               </span>
 
             </div>
@@ -208,7 +208,7 @@
         <!-- MODAL -->
 
         <a href="{% url 'businesspost' %}"><button type="button" class="btn btn-primary">
-            Open
+          Add Business
           </button></a>
 
 
