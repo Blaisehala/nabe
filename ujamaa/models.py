@@ -59,7 +59,7 @@ class Business(models.Model):
   description = models.TextField(blank=True)
   business_email = models.EmailField(max_length=200, blank=True)
   business_type = models.CharField (max_length=150, blank=True)
-  Owner = models.ForeignKey (Profile,on_delete=models.CASCADE, blank=True)
+  user = models.ForeignKey (Profile,on_delete=models.CASCADE)
   date_created = models.DateTimeField(auto_now_add=True)
   date_updated = models.DateTimeField(auto_now=True)
 
@@ -68,6 +68,18 @@ class Business(models.Model):
 def __str__(self):
   return str(self.name)
     
+def get_business(self):
+  business = Business.objects.all()
+  return business
+
+def create_business(self):
+  self.save()
 
 
-
+class Post(models.Model):
+  title = models.CharField(max_length=255)
+  image =models.ImageField(upload_to='media')
+  content = models.TextField(blank=True, null=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
+  date_posted = models.DateTimeField(auto_now_add=True)
