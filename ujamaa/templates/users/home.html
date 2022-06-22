@@ -26,16 +26,17 @@
 
   
 
-    <div class="home container text-center mt-5 p-5 text-light">
-      
+    <div class=" container text-center mt-5 p-5 text-light">
+      <div class="home">
         <p>BLUEBRAVE <span>neighbourhoods</span></p>
         
-      
-     
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <a href="{% url 'register' %}"><button class="btn btn-primary" type="button">Get Started</button></a>
-        
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <a href="{% url 'register' %}"><button class="btn btn-primary" type="button">Get Started</button></a>
+          
+        </div>
+
       </div>
+       
      
       
     </div>
@@ -73,6 +74,20 @@ span{
   font-family: 'Lobster', cursive;
   color:white;
   font-size: 30px;
+
+}
+
+.home{
+  width:100vh;
+    height: 300px;
+    /* background-color: red; */
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    margin: auto;
 
 }
 
