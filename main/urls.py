@@ -29,12 +29,16 @@ urlpatterns = [
     
     path ('register/', ujamaa_views.register, name='register' ),
     
+    path ('jb/', ujamaa_views.join_hood, name='jb' ),
+
 
     path ('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login' ),
 
     path ('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout' ),
 
     path('', include('ujamaa.urls')),
+
+    path ('tinymce/', include('tinymce.urls')),
 
 
 ]
