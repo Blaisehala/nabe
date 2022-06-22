@@ -79,7 +79,7 @@ def create_business(self):
 
 class Post(models.Model):
   title = models.CharField(max_length=255)
-  image =models.CloudinaryField('image')
+  image =CloudinaryField('image')
   content = models.TextField(blank=True, null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE, default=1)
